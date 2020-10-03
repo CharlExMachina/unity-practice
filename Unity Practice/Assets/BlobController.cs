@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlobController : MonoBehaviour
 {
     private Animator _animator;
+    private AudioSource _audio;
 
     private int isWalking = Animator.StringToHash("IsWalking");
     private int isDead = Animator.StringToHash("IsDead");
@@ -13,6 +14,7 @@ public class BlobController : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class BlobController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             _animator.SetBool(isDead, true);
+            _audio.PlayDelayed(3);
         }
     }
 }
